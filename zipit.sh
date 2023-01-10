@@ -44,10 +44,11 @@ bch $bitdir stop
 while kill -0 $bitpid; do printf .; sleep 1; done; echo
 
 now=$(date +"%y%m%d")
-mkdir -p $bitout
+mkdir -p $bitout/indexes
 
 cp -r $bitdir/chainstate $bitout/
 cp -r $bitdir/blocks $bitout/
+cp -r $bitdir/indexes/coinstats $bitout/indexes/
 cp $bitdir/bitcoin.conf $bitout/
 
 bdh $bitdir -disablewallet -daemon
